@@ -50,7 +50,6 @@ msgstr "バージョン%(num)iのアップグレード用モジュールがあ�
 
 #. TRANSLATOR: Keep macro doc style formatting here, please.
 #: tractags/macros.py:88
-#, fuzzy
 msgid ""
 "Display a tag cloud.\n"
 "\n"
@@ -119,6 +118,34 @@ msgid ""
 "    See tags documentation for the query syntax.\n"
 "    "
 msgstr ""
+"タグ付けされているリソースを表示します。\n"
+"\n"
+"    使用方法:\n"
+"\n"
+"    {{{\n"
+"    "
+"[[ListTagged(<query>[,exclude=<list>],[[format=<format>],cols=<columns>])]]"
+"\n"
+"    }}}\n"
+"    format::\n"
+"      結果表示形式; 使用可能な値:\n"
+"\n"
+"    || `compact` || comma-separated inline list of \"linked-description\""
+" ||\n"
+"    || `oldlist` (default) || \" * linked-id description (tags)\" list ||"
+"\n"
+"    || `table` || table... (see corresponding column option too) ||\n"
+"    || `short` or other value || bulleted list of \"linked-description\" "
+"||\n"
+"    cols::\n"
+"      'table' 形式での表示するカラムのカラム名を \"|\" 区切りで表示順に指定します。\n"
+"      ; 使用可能なカラム: realm, id, description, tags\n"
+"    exclude::\n"
+"      除外するリソースをコロン区切りのリストで指定します。\n"
+"      sh-形式のパターンマッチを使用できます。\n"
+"\n"
+"    クエリの構文については tags のドキュメントを参照してください。\n"
+"    "
 
 #: tractags/macros.py:232
 msgid "Id"
@@ -189,21 +216,21 @@ msgstr "タグクラウドに戻る"
 
 #: tractags/web_ui.py:382
 msgid "matching tags "
-msgstr ""
+msgstr "タグ"
 
 #: tractags/web_ui.py:417
-#, fuzzy, python-format
+#, python-format
 msgid "Tag query syntax error: %s"
-msgstr "クエリの構文:"
+msgstr "タグクエリ構文エラー: %s"
 
 #: tractags/web_ui.py:455
 msgid "Tag changes"
-msgstr ""
+msgstr "タグの変更"
 
 #: tractags/web_ui.py:476
 #, python-format
 msgid "Tag change on %(resource)s"
-msgstr ""
+msgstr "%(resource)s のタグ変更"
 
 #: tractags/web_ui.py:487
 #, python-format
@@ -391,27 +418,3 @@ msgid ""
 "Showing only tags with %(mincount)s or more occurrences\n"
 "          ([1:view all tags])"
 msgstr "%(mincount)s文字以上のタグを表示しています ([1:すべてのタグを見る])"
-
-#~ msgid ""
-#~ "List tagged resources.\n"
-#~ "\n"
-#~ "    Usage:\n"
-#~ "\n"
-#~ "    {{{\n"
-#~ "    [[ListTagged(query)]]\n"
-#~ "    }}}\n"
-#~ "\n"
-#~ "    See tags documentation for the query syntax.\n"
-#~ "    "
-#~ msgstr ""
-#~ "タグ付けされているリソースを表示します。\n"
-#~ "\n"
-#~ "    使用方法:\n"
-#~ "\n"
-#~ "    {{{\n"
-#~ "    [[ListTagged(query)]]\n"
-#~ "    }}}\n"
-#~ "\n"
-#~ "    クエリの構文については tags のドキュメントを参照してください。\n"
-#~ "    "
-
