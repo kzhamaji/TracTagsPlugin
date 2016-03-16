@@ -1,38 +1,38 @@
 # Japanese translations for TracTags.
-# Copyright (C) 2014
+# Copyright (C) 2016 ORGANIZATION
 # This file is distributed under the same license as the TracTags
 # project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
-# Translators:
-# Jun Omae <jun66j5@gmail.com>, 2010,2014
 msgid ""
 msgstr ""
 "Project-Id-Version: TracTags 0.7\n"
 "Report-Msgid-Bugs-To: hoff.st@shaas.net\n"
-"POT-Creation-Date: 2014-03-30 13:34+0200\n"
+"POT-Creation-Date: 2016-03-16 15:28+0900\n"
 "PO-Revision-Date: 2014-03-31 10:52+0000\n"
 "Last-Translator: Jun Omae <jun66j5@gmail.com>\n"
+"Language: ja\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/Trac_Plugin-"
 "L10N/language/ja/)\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.3\n"
+"Generated-By: Babel 2.2.0\n"
 
-#: tractags/admin.py:27
+#: tractags/admin.py:26
 msgid "Tag System"
 msgstr "タグシステム"
 
-#: tractags/admin.py:27 tractags/templates/admin_tag_change.html:42
+#: tractags/admin.py:26 tractags/templates/admin_tag_change.html:48
 msgid "Replace"
 msgstr "置換"
 
-#: tractags/admin.py:52
+#: tractags/admin.py:49
 msgid "Selected current tag(s) and either new tag or delete approval are required"
 msgstr "選択しているタグと新しいタグないし削除に対する同意が必要です"
 
-#: tractags/api.py:541
+#: tractags/api.py:592
 #, python-format
 msgid "Tags are not supported on the '%s' realm"
 msgstr "'%s' レルムでのタグ付けをサポートしていません"
@@ -49,7 +49,8 @@ msgid "No upgrade module for version %(num)i (%(version)s.py)"
 msgstr "バージョン%(num)iのアップグレード用モジュールがありません (%(version)s.py)"
 
 #. TRANSLATOR: Keep macro doc style formatting here, please.
-#: tractags/macros.py:111
+#: tractags/macros.py:88
+#, fuzzy
 msgid ""
 "Display a tag cloud.\n"
 "\n"
@@ -58,7 +59,7 @@ msgid ""
 "    Usage:\n"
 "\n"
 "    {{{\n"
-"    [[TagCloud(query,caseless_sort=<bool>,mincount=<n>)]]\n"
+"    [[TagCloud(<query>[,caseless_sort=<bool>][,mincount=<n>])]]\n"
 "    }}}\n"
 "    caseless_sort::\n"
 "      Whether the tag cloud should be sorted case-sensitive.\n"
@@ -85,59 +86,69 @@ msgstr ""
 "    クエリの構文については tags のドキュメントを参照してください。\n"
 "    "
 
-#: tractags/macros.py:127
+#: tractags/macros.py:104
 msgid ""
 "List tagged resources.\n"
 "\n"
 "    Usage:\n"
 "\n"
 "    {{{\n"
-"    [[ListTagged(query)]]\n"
+"    "
+"[[ListTagged(<query>[,exclude=<list>],[[format=<format>],cols=<columns>])]]"
+"\n"
 "    }}}\n"
+"    format::\n"
+"      result list presentation; supported values:\n"
+"\n"
+"    || `compact` || comma-separated inline list of \"linked-description\""
+" ||\n"
+"    || `oldlist` (default) || \" * linked-id description (tags)\" list ||"
+"\n"
+"    || `table` || table... (see corresponding column option too) ||\n"
+"    || `short` or other value || bulleted list of \"linked-description\" "
+"||\n"
+"    cols::\n"
+"      columns for 'table' format using a \"|\"-separated list of column "
+"names\n"
+"      (order matters); supported columns: realm, id, description, tags\n"
+"    exclude::\n"
+"      exclude tagged resources that match a name in the colon-separated "
+"list\n"
+"      of resource ids, accepts shell-style patterns\n"
 "\n"
 "    See tags documentation for the query syntax.\n"
 "    "
 msgstr ""
-"タグ付けされているリソースを表示します。\n"
-"\n"
-"    使用方法:\n"
-"\n"
-"    {{{\n"
-"    [[ListTagged(query)]]\n"
-"    }}}\n"
-"\n"
-"    クエリの構文については tags のドキュメントを参照してください。\n"
-"    "
 
-#: tractags/macros.py:235
+#: tractags/macros.py:232
 msgid "Id"
 msgstr "ID"
 
-#: tractags/macros.py:239
+#: tractags/macros.py:236
 msgid "Realm"
 msgstr "レルム"
 
 #. TRANSLATOR: Header label text for tag list at wiki page bottom.
-#: tractags/macros.py:240 tractags/web_ui.py:68 tractags/web_ui.py:107
-#: tractags/wiki.py:227 tractags/wiki.py:254
-#: tractags/templates/admin_tag_change.html:13
+#: tractags/macros.py:237 tractags/web_ui.py:290 tractags/web_ui.py:329
+#: tractags/web_ui.py:494 tractags/wiki.py:245
+#: tractags/templates/admin_tag_change.html:19
 msgid "Tags"
 msgstr "タグ"
 
-#: tractags/macros.py:372
+#: tractags/macros.py:366
 msgid "No tags found"
 msgstr "一致するタグが見つかりません"
 
-#: tractags/macros.py:387
+#: tractags/macros.py:388
 #, python-format
 msgid "Page %(num)d"
 msgstr "ページ%(num)d"
 
-#: tractags/macros.py:398
+#: tractags/macros.py:399
 msgid "Next Page"
 msgstr "次のページ"
 
-#: tractags/macros.py:403
+#: tractags/macros.py:404
 msgid "Previous Page"
 msgstr "前のページ"
 
@@ -163,72 +174,90 @@ msgstr "終端せずに '%s' が得られました"
 msgid "Invalid attribute '%s'"
 msgstr "不正な属性 '%s'"
 
-#: tractags/ticket.py:44
+#: tractags/ticket.py:43
 msgid "List of ticket fields to expose as tags."
 msgstr "タグとして見せるチケットのフィールドを指定します。"
 
-#: tractags/ticket.py:47
+#: tractags/ticket.py:46
 msgid "Do not collect tags from closed tickets."
 msgstr "完了済みのチケットからタグを収集しない。"
 
 #. TRANSLATOR: The meta-nav link label.
-#: tractags/web_ui.py:121
+#: tractags/web_ui.py:341
 msgid "Back to Cloud"
 msgstr "タグクラウドに戻る"
 
-#: tractags/wiki.py:220
+#: tractags/web_ui.py:382
+msgid "matching tags "
+msgstr ""
+
+#: tractags/web_ui.py:417
+#, fuzzy, python-format
+msgid "Tag query syntax error: %s"
+msgstr "クエリの構文:"
+
+#: tractags/web_ui.py:455
+msgid "Tag changes"
+msgstr ""
+
+#: tractags/web_ui.py:476
+#, python-format
+msgid "Tag change on %(resource)s"
+msgstr ""
+
+#: tractags/web_ui.py:487
 #, python-format
 msgid "%(tags)s added"
 msgid_plural "%(tags)s added"
 msgstr[0] "%(tags)s を追加"
 
-#: tractags/wiki.py:224
+#: tractags/web_ui.py:491
 #, python-format
 msgid "%(tags)s removed"
 msgid_plural "%(tags)s removed"
 msgstr[0] "%(tags)s を削除"
 
 #. TRANSLATOR: How to delimit added and removed tags.
-#: tractags/wiki.py:226
+#: tractags/web_ui.py:493
 msgid "; "
 msgstr "、"
 
 #. TRANSLATOR: Label text for link to '/tags'.
-#: tractags/wiki.py:270
+#: tractags/wiki.py:260
 msgid "view all tags"
 msgstr "すべてのタグを表示する"
 
 #. TRANSLATOR: ... (view all tags)
-#: tractags/wiki.py:272
+#: tractags/wiki.py:262
 #, python-format
 msgid "Tag under: (%(tags_link)s)"
 msgstr "タグ: (%(tags_link)s)"
 
-#: tractags/wiki.py:353
+#: tractags/wiki.py:348
 msgid "no permission to view tags"
 msgstr "タグを表示する権限がありません"
 
-#: tractags/templates/admin_tag_change.html:16
+#: tractags/templates/admin_tag_change.html:22
 msgid "Manage Tags"
 msgstr "タグの管理"
 
-#: tractags/templates/admin_tag_change.html:19
+#: tractags/templates/admin_tag_change.html:25
 msgid "Filters"
 msgstr "フィルタ"
 
-#: tractags/templates/admin_tag_change.html:20
+#: tractags/templates/admin_tag_change.html:26
 msgid "Tag filters"
 msgstr "タグのフィルタ"
 
-#: tractags/templates/admin_tag_change.html:21
+#: tractags/templates/admin_tag_change.html:27
 msgid "Realms"
 msgstr "レルム"
 
-#: tractags/templates/admin_tag_change.html:30
+#: tractags/templates/admin_tag_change.html:36
 msgid "Update"
 msgstr "変更"
 
-#: tractags/templates/admin_tag_change.html:43
+#: tractags/templates/admin_tag_change.html:49
 msgid ""
 "Select an existing tag to replace with another one;\n"
 "          two or more to consolidate into one. The [1:required] new tag\n"
@@ -238,11 +267,11 @@ msgid ""
 "realm."
 msgstr "他ので置き換えるタグを選択します。複数のタグを1つに集約することができます。[1:必須]の新しいタグは既存のタグか新規のものにしてください。変更コメントはタグのストレージがサポートしていれば追加が行われます。"
 
-#: tractags/templates/admin_tag_change.html:49
+#: tractags/templates/admin_tag_change.html:55
 msgid "Current Tag:"
 msgstr "現在のタグ:"
 
-#: tractags/templates/admin_tag_change.html:60
+#: tractags/templates/admin_tag_change.html:66
 msgid ""
 "New Tag:[1:]\n"
 "            [2:][3:]or\n"
@@ -253,11 +282,11 @@ msgstr ""
 "[2:][3:] または\n"
 "[4:] タグの削除を許可する"
 
-#: tractags/templates/admin_tag_change.html:67
+#: tractags/templates/admin_tag_change.html:73
 msgid "Comment (optional):"
 msgstr "コメント (省略可):"
 
-#: tractags/templates/admin_tag_change.html:71
+#: tractags/templates/admin_tag_change.html:77
 msgid ""
 "[1:Beware:] Attempting to replace one or more tags will\n"
 "            always add the new tag, but [2:removal could fail]\n"
@@ -267,7 +296,7 @@ msgstr ""
 "[1:注意:] "
 "タグの置換は常に新しいタグを追加します。しかし、タグがタグプロバイダ由来の場合、その内部構造により変更できずに[2:削除が失敗]する可能性があります。"
 
-#: tractags/templates/admin_tag_change.html:77
+#: tractags/templates/admin_tag_change.html:83
 msgid ""
 "You'll need to investigate further on how to change/remove these\n"
 "            remaining tags closer to the tagged resource, i.e. in your\n"
@@ -277,39 +306,39 @@ msgstr ""
 "リソースに付けたそれらのタグを変更ないし削除する方法をさらに調査する必要があります。すなわち、realm:ticket "
 "用のタグとして列挙するフィールドを指定する [1:trac.ini] にある [2:ticket_fields] の設定を確認してください。"
 
-#: tractags/templates/admin_tag_change.html:89
+#: tractags/templates/admin_tag_change.html:95
 msgid "Change"
 msgstr "変更"
 
-#: tractags/templates/listtagged_results.html:12
+#: tractags/templates/listtagged_results.html:18
 msgid ""
 "You seem to be using an old Tag query. Try using the\n"
 "      [1:new syntax] in your\n"
 "      [2:ListTagged] macro."
 msgstr "旧タグクエリです。[2:ListTagged] マクロで[1:新しいシンタックス]を試してください。"
 
-#: tractags/templates/listtagged_results.html:18
+#: tractags/templates/listtagged_results.html:24
 msgid "Results"
 msgstr "結果"
 
-#: tractags/templates/listtagged_results.html:35
-#: tractags/templates/listtagged_results.html:48
+#: tractags/templates/listtagged_results.html:41
+#: tractags/templates/listtagged_results.html:54
 msgid "No resources found"
 msgstr "一致するものが見つかりませんでした。"
 
-#: tractags/templates/tag_view.html:25
+#: tractags/templates/tag_view.html:32
 msgid "Filter Tags"
 msgstr "タグを絞り込む"
 
-#: tractags/templates/tag_view.html:35
+#: tractags/templates/tag_view.html:42
 msgid "Error:"
 msgstr "エラー:"
 
-#: tractags/templates/tag_view.html:38
+#: tractags/templates/tag_view.html:45
 msgid "Query syntax:"
 msgstr "クエリの構文:"
 
-#: tractags/templates/tag_view.html:39
+#: tractags/templates/tag_view.html:46
 msgid ""
 "[1:Use [2:tag1 tag2] to match [3:all] tags.]\n"
 "            [4:[5:tag1 or tag2] will match [6:any] tag.]\n"
@@ -325,11 +354,11 @@ msgstr ""
 "[11:特殊文字を使うには引用符で囲みます。]\n"
 "[12:[13:realm:wiki] とすると範囲を限定した検索となります。]"
 
-#: tractags/templates/tag_view.html:56
+#: tractags/templates/tag_view.html:63
 msgid "Go to wiki page"
 msgstr "Wiki ページ]に移動する"
 
-#: tractags/templates/tag_view.html:52
+#: tractags/templates/tag_view.html:59
 #, python-format
 msgid ""
 "Showing objects tagged with\n"
@@ -338,17 +367,17 @@ msgid ""
 "            ]"
 msgstr "[1:'%(query)s'] に該当するものを表示しています"
 
-#: tractags/templates/tag_view.html:60
+#: tractags/templates/tag_view.html:67
 #, python-format
 msgid "Showing objects tagged with '%(query)s'"
 msgstr "'%(query)s' に該当するものを表示しています"
 
-#: tractags/templates/tag_view.html:63
+#: tractags/templates/tag_view.html:70
 #, python-format
 msgid "Showing objects matching '%(query)s'"
 msgstr "'%(query)s' に該当するものを表示しています"
 
-#: tractags/templates/tag_view.html:67
+#: tractags/templates/tag_view.html:74
 msgid ""
 "[1:\n"
 "            Create Wiki page\n"
@@ -356,10 +385,33 @@ msgid ""
 "          for this tag"
 msgstr "このタグで [1:Wiki ページを作成する]"
 
-#: tractags/templates/tag_view.html:77
+#: tractags/templates/tag_view.html:84
 #, python-format
 msgid ""
 "Showing only tags with %(mincount)s or more occurrences\n"
 "          ([1:view all tags])"
 msgstr "%(mincount)s文字以上のタグを表示しています ([1:すべてのタグを見る])"
+
+#~ msgid ""
+#~ "List tagged resources.\n"
+#~ "\n"
+#~ "    Usage:\n"
+#~ "\n"
+#~ "    {{{\n"
+#~ "    [[ListTagged(query)]]\n"
+#~ "    }}}\n"
+#~ "\n"
+#~ "    See tags documentation for the query syntax.\n"
+#~ "    "
+#~ msgstr ""
+#~ "タグ付けされているリソースを表示します。\n"
+#~ "\n"
+#~ "    使用方法:\n"
+#~ "\n"
+#~ "    {{{\n"
+#~ "    [[ListTagged(query)]]\n"
+#~ "    }}}\n"
+#~ "\n"
+#~ "    クエリの構文については tags のドキュメントを参照してください。\n"
+#~ "    "
 
